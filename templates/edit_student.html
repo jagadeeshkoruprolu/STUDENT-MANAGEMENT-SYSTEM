@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Edit Student</h2>
+    <form method="post">
+        {% set s = student %}
+        <input name="hall_ticket" value="{{ s[1] }}" required>
+        <input name="name" value="{{ s[2] }}" required>
+        <input name="age" value="{{ s[3] }}" required type="number">
+        <select name="gender">
+            <option value="Male" {% if s[4] == 'Male' %}selected{% endif %}>Male</option>
+            <option value="Female" {% if s[4] == 'Female' %}selected{% endif %}>Female</option>
+        </select>
+        <input name="mobile" value="{{ s[5] }}" required>
+        <input name="location" value="{{ s[6] }}" required>
+        <input name="email" value="{{ s[7] }}" required>
+        <input name="dob" value="{{ s[8] }}" required type="date">
+        <button type="submit" class="btn">Update</button>
+    </form>
+    <a href="{{ url_for('index') }}">Back to List</a>
+</body>
+</html>
